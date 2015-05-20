@@ -15,7 +15,7 @@ module Embulk
           "protocol" => config.param("protocol", :string),
           "key_column" => config.param("key_column",:string, default: 'gqtp'),
           "table" => config.param("table",:string),
-          "create_table" => config.param("create_table",:string)
+#          "create_table" => config.param("create_table",:string)
         }
         prot = task['protocol']
         raise RuntimeError,"Unknown protocol #{prot}. supported protocol: gqtp, http" unless %w[gqtp http].include?(prot)
@@ -47,7 +47,7 @@ module Embulk
         @key_column = task["key_column"]
         @out_table = task["table"]
 
-        create_table
+#        create_table
       end
 
       def close
