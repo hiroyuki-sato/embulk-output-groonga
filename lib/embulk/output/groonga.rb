@@ -4,6 +4,7 @@ require 'pp'
 module Embulk
   module Output
 
+    FLUSH_SIZE = 1_000
     class GroongaOutputPlugin < OutputPlugin
       Plugin.register_output("groonga", self)
 
@@ -56,12 +57,22 @@ module Embulk
 
       def add(page)
         # output code:
-        page.each do |record|
+        records = []
+        idx = 0
+        page.each_with_index do |record,idx|
           hash = Hash[schema.names.zip(record)]
           v = hash.delete(@key_column)
           hash['_key'] = v
+          records << hash
+          if( idx > 0 && idx % FLUSH_SIZE == 0 )
+            ret = @client.load({:table => @out_table,
+                                :values => records })
+            records.clear
+          end
+        end
+        if( records.size > 0 )
           ret = @client.load({:table => @out_table,
-                        :values => [hash] })
+                              :values => records })
         end
       end
 
