@@ -81,13 +81,13 @@ module Embulk
         @client.table_list.map{ |x| x['name'] }
       end
 
-      def table_exit?(name)
+      def table_exist?(name)
         # TODO Error check
         table_names.include?(name)
       end
 
       def create_table
-        return if table_exit?(@out_table)
+        return if table_exist?(@out_table)
         create_table = @task['create_table']
 
         # TODO Error check
