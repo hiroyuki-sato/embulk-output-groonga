@@ -49,6 +49,6 @@ out:
   table: Site
   key_column: key
   host: localhost
-  port: 10043
-  protocol: gqtp
+  port: 10041
+  protocol: http
 ```
