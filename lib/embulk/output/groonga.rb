@@ -1,5 +1,4 @@
 require 'groonga/client'
-require 'pp'
 
 module Embulk
   module Output
@@ -12,9 +11,9 @@ module Embulk
         # configuration code:
         task = {
           "host" => config.param("host", :string),
-          "port" => config.param("port", :integer),
-          "protocol" => config.param("protocol", :string),
-          "key_column" => config.param("key_column",:string, default: 'gqtp'),
+          "port" => config.param("port", :integer, default: 10041),
+          "protocol" => config.param("protocol", :string, default: 'http'),
+          "key_column" => config.param("key_column",:string),
           "table" => config.param("table",:string),
 #          "create_table" => config.param("create_table",:string)
         }
