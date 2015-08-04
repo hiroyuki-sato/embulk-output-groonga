@@ -1,4 +1,15 @@
 require 'groonga/client'
+require 'embulk/output/groonga/base_client.rb'
+require 'embulk/output/groonga/column.rb'
+require 'embulk/output/groonga/command_client.rb'
+require 'embulk/output/groonga/definition_parse_methods.rb'
+require 'embulk/output/groonga/index_definitions.rb'
+require 'embulk/output/groonga/network_cilent.rb'
+require 'embulk/output/groonga/schema.rb'
+require 'embulk/output/groonga/table.rb'
+require 'embulk/output/groonga/table_definition.rb'
+require 'embulk/output/groonga/tables_creator.rb'
+require 'embulk/output/groonga/type_gusser.rb'
 
 module Embulk
   module Output
