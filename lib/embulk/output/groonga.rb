@@ -66,12 +66,20 @@ module Embulk
           if( idx > 0 && idx % FLUSH_SIZE == 0 )
             ret = @client.load({:table => @out_table,
                                 :values => records })
-            records.clear
+             Embulk.logger.info "groonga inserted #{ret.body} / #{records.size}"
+             if( ret.body != records.size )
+               raise RuntimeError,"inserted value does not match"
+             end
+             records.clear
           end
         end
         if( records.size > 0 )
           ret = @client.load({:table => @out_table,
                               :values => records })
+           Embulk.logger.info "groonga inserted #{ret.body} / #{records.size}"
+           if( ret.body != records.size )
+             raise RuntimeError,"inserted value does not match"
+           end
         end
       end
 
