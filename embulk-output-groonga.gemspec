@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "embulk-output-groonga"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Hiroyuki Sato"]
   spec.summary       = "Groonga output plugin for Embulk"
   spec.description   = "Dumps records to Groonga."
