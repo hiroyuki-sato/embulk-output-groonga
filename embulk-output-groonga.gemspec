@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Dumps records to Groonga."
   spec.email         = ["hiroysato@gmail.com"]
   spec.licenses      = ["MIT"]
-  # TODO set this: spec.homepage      = "https://github.com/hiroyuki-sato/embulk-output-groonga"
+  spec.homepage      = "https://github.com/hiroyuki-sato/embulk-output-groonga"
 
   spec.files         = `git ls-files`.split("\n") + Dir["classpath/*.jar"]
   spec.test_files    = spec.files.grep(%r{^(test|spec)/})
