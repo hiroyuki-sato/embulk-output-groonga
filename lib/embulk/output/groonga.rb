@@ -13,6 +13,8 @@ module Embulk
           "host" => config.param("host", :string),
           "port" => config.param("port", :integer, default: 10041),
           "protocol" => config.param("protocol", :string, default: 'http'),
+          "user" => config.param("user", :string, default: nil),
+          "password" => config.param("password", :string, default: nil),
           "key_column" => config.param("key_column",:string),
           "table" => config.param("table",:string),
 #          "create_table" => config.param("create_table",:string)
@@ -38,12 +40,17 @@ module Embulk
 
       def init
         # initialization code:
-        host = task["host"]
-        port = task["port"]
-        protocol = task["protocol"].to_sym
-        @client = Groonga::Client.open({:host => host,
-                                        :port => port,
-                                        :protocol => protocol})
+        param = {}
+        param[:host] = task["host"]
+        param[:port] = task["port"]
+        param[:protocol] = task["protocol"].to_sym
+        if user = param["user"]
+          param[:user] = user
+        end
+        if password = param["password"]
+          param[:password] = password
+        end
+        @client = Groonga::Client.open(param)
         @key_column = task["key_column"]
         @out_table = task["table"]
 
