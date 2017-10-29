@@ -44,10 +44,10 @@ module Embulk
         param[:host] = task["host"]
         param[:port] = task["port"]
         param[:protocol] = task["protocol"].to_sym
-        if user = param["user"]
+        if user = task["user"]
           param[:user] = user
         end
-        if password = param["password"]
+        if password = task["password"]
           param[:password] = password
         end
         @client = Groonga::Client.open(param)
