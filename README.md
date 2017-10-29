@@ -16,6 +16,8 @@ Embulk output plugin to load insert data into groonga (full text search engine)
 - **host**: groonga server name (string, rerquired)
 - **port**: groonga port (integer, default: 10041)
 - **protocol**: connection protocol gqtp or http, (string, default: http )
+- **user**: groonga login username(http only) (string, default: nil)
+- **password**: groonga login password(http only) (string, default: nil)
 
 
 ## Installation
